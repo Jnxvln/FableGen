@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block customCss %}
+  <link rel="stylesheet" href="{% static 'characters/character-list.css' %}"/>
+{% endblock customCss %}
+
+{% block content %}
+<section class="uk-container uk-padding">
+  <h1>Characters</h1>
+  <a href="{% url 'characters:character-create' %}" class="uk-button uk-button-primary">New</a>
+  <ul class="character-list-list uk-padding-small">
+    {% for character in characters %}
+      <a href="{% url 'characters:character-detail' character.pk %}" class="character-list-card-wrapper">
+        <div class="uk-card uk-card-default uk-card-body character-list-card">
+          <h3 class="uk-card-title character-list-name">{{ character.name }}</h3>
+        </div>
+      </a>
+    {% endfor %}
+  </ul>
+</section>
+{% endblock content %}
