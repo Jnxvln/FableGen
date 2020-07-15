@@ -7,5 +7,9 @@
 
   <h1>{{ character.name }}</h1>
   <p>Gender: {{ character.gender|capfirst }}</p>
+
+  <div>
+    <a href="{% url 'characters:character-delete' character.pk %}" class="uk-button uk-button-danger">Delete Character</a>
+  </div>
 </section>
 {% endblock content %}

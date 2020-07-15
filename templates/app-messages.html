@@ -1,0 +1,8 @@
+{% if messages %}
+  {% for message in messages %}
+    <div class="uk-alert-{{ message.tags }}" uk-alert>
+      <a class="uk-alert-close" uk-close></a>
+      {{ message|safe }}
+    </div>
+  {% endfor %}
+{% endif %}

@@ -7,6 +7,9 @@
 
 {% block content %}
 <section class="uk-container uk-padding">
+
+  {% include 'app-messages.html' %}
+
   <h1>Characters</h1>
   <a href="{% url 'characters:character-create' %}" class="uk-button uk-button-primary">New</a>
   <ul class="character-list-list uk-padding-small">

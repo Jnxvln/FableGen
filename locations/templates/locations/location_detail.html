@@ -7,5 +7,9 @@
 
   <h1>{{ location.name }}</h1>
   <p>Backstory: {{ location.backstory|capfirst }}</p>
+
+  <div>
+    <a href="{% url 'locations:location-delete' location.pk %}" class="uk-button uk-button-danger">Delete Location</a>
+  </div>
 </section>
 {% endblock content %}

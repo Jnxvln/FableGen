@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block customCss %}
+  <link rel="stylesheet" href="{% static 'places/place-list.css' %}"/>
+{% endblock customCss %}
+
+{% block content %}
+<section class="uk-container uk-padding">
+
+  {% include 'app-messages.html' %}
+
+  <h1>Places</h1>
+  <a href="{% url 'places:place-create' %}" class="uk-button uk-button-primary">New</a>
+  <ul class="place-list-list uk-padding-small">
+    {% for place in places %}
+      <a href="{% url 'places:place-detail' place.pk %}" class="place-list-card-wrapper">
+        <div class="uk-card uk-card-default uk-card-body place-list-card">
+          <h3 class="uk-card-title place-list-name">{{ place.name }}</h3>
+        </div>
+      </a>
+    {% endfor %}
+  </ul>
+</section>
+{% endblock content %}

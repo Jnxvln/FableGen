@@ -7,6 +7,9 @@
 
 {% block content %}
 <section class="uk-container uk-padding">
+
+  {% include 'app-messages.html' %}
+
   <h1>Locations</h1>
   <a href="{% url 'locations:location-create' %}" class="uk-button uk-button-primary">New</a>
   <ul class="location-list-list uk-padding-small">
