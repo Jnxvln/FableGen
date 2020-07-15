@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="uk-container uk-padding">
+
+  {% include 'back-btn.html' %}
+
+  <h1>{{ location.name }}</h1>
+  <p>Backstory: {{ location.backstory|capfirst }}</p>
+</section>
+{% endblock content %}

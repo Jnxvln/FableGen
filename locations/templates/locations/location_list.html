@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block customCss %}
+  <link rel="stylesheet" href="{% static 'locations/location-list.css' %}"/>
+{% endblock customCss %}
+
+{% block content %}
+<section class="uk-container uk-padding">
+  <h1>Locations</h1>
+  <a href="{% url 'locations:location-create' %}" class="uk-button uk-button-primary">New</a>
+  <ul class="location-list-list uk-padding-small">
+    {% for location in locations %}
+      <a href="{% url 'locations:location-detail' location.pk %}" class="location-list-card-wrapper">
+        <div class="uk-card uk-card-default uk-card-body location-list-card">
+          <h3 class="uk-card-title location-list-name">{{ location.name }}</h3>
+        </div>
+      </a>
+    {% endfor %}
+  </ul>
+</section>
+{% endblock content %}
