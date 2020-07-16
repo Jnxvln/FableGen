@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="uk-container uk-padding">
+
+  {% include 'back-btn.html' %}
+
+  <h1>{{ item.name }}</h1>
+
+  <div>
+    <a href="{% url 'items:item-delete' item.pk %}" class="uk-button uk-button-danger">Delete Item</a>
+  </div>
+</section>
+{% endblock content %}

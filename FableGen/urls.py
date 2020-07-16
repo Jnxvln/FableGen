@@ -21,4 +21,5 @@ urlpatterns = [
     path('characters/', include('characters.urls', namespace='characters')),
     path('locations/', include('locations.urls', namespace='locations')),
     path('places/', include('places.urls', namespace='places')),
+    path('items/', include('items.urls', namespace='items')),
 ]

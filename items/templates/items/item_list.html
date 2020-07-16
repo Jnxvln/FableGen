@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block customCss %}
+  <link rel="stylesheet" href="{% static 'items/item-list.css' %}"/>
+{% endblock customCss %}
+
+{% block content %}
+<section class="uk-container uk-padding">
+
+  {% include 'app-messages.html' %}
+
+  <h1>Items</h1>
+  <a href="{% url 'items:item-create' %}" class="uk-button uk-button-primary">New</a>
+  <ul class="item-list-list uk-padding-small">
+    {% for item in items %}
+      <a href="{% url 'items:item-detail' item.pk %}" class="item-list-card-wrapper">
+        <div class="uk-card uk-card-default uk-card-body item-list-card">
+          <h3 class="uk-card-title item-list-name">{{ item.name }}</h3>
+        </div>
+      </a>
+    {% endfor %}
+  </ul>
+</section>
+{% endblock content %}
