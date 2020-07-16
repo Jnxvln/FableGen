@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="uk-container uk-padding">
+
+  {% include 'app-messages.html' %}
+  {% include 'back-btn.html' %}
+
+  <h1>{{ quest.name }}</h1>
+  <p>{{ quest.story|capfirst }}</p>
+
+  <div>
+    <a href="{% url 'quests:quest-update' quest.pk %}" class="uk-button uk-button-secondary">Edit Quest</a>
+    <a href="{% url 'quests:quest-delete' quest.pk %}" class="uk-button uk-button-danger">Delete Quest</a>
+  </div>
+</section>
+{% endblock content %}

@@ -18,11 +18,18 @@ class ItemCreate(CreateView):
 class ItemDetail(DetailView):
   model = Item
 
+class ItemUpdate(SuccessMessageMixin, UpdateView):
+  model = Item
+  fields = '__all__'
+  success_message = '%(name)s updated successfully!'
+
 class ItemDelete(DeleteView):
     model = Item
-    success_message = 'Item deleted successfully!'
+    success_message = '{item} deleted successfully!'
     success_url = reverse_lazy('items:item-list')
 
     def delete(self, request, *args, **kwargs):
+      item = Item.objects.get(pk=kwargs.get('pk'))
+      self.success_message = f'{item} deleted successfully!'
       messages.success(self.request, self.success_message)
       return super(ItemDelete, self).delete(request, *args, **kwargs)

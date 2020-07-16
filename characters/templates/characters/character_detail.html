@@ -3,12 +3,14 @@
 {% block content %}
 <section class="uk-container uk-padding">
 
+  {% include 'app-messages.html' %}
   {% include 'back-btn.html' %}
 
   <h1>{{ character.name }}</h1>
   <p>Gender: {{ character.gender|capfirst }}</p>
 
   <div>
+    <a href="{% url 'characters:character-update' character.pk %}" class="uk-button uk-button-secondary">Edit Character</a>
     <a href="{% url 'characters:character-delete' character.pk %}" class="uk-button uk-button-danger">Delete Character</a>
   </div>
 </section>

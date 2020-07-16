@@ -18,11 +18,18 @@ class PlaceCreate(CreateView):
 class PlaceDetail(DetailView):
   model = Place
 
-class PlaceDelete(DeleteView):
-    model = Place
-    success_message = 'Place deleted successfully!'
-    success_url = reverse_lazy('places:place-list')
+class PlaceUpdate(SuccessMessageMixin, UpdateView):
+  model = Place
+  fields = '__all__'
+  success_message = '%(name)s updated successfully!'
 
-    def delete(self, request, *args, **kwargs):
-      messages.success(self.request, self.success_message)
-      return super(PlaceDelete, self).delete(request, *args, **kwargs)
+class PlaceDelete(DeleteView):
+  model = Place
+  success_message = '{place} deleted successfully!'
+  success_url = reverse_lazy('places:place-list')
+
+  def delete(self, request, *args, **kwargs):
+    place = Place.objects.get(pk=kwargs.get('pk'))
+    self.success_message = f'{place} deleted successfully!'
+    messages.success(self.request, self.success_message)
+    return super(PlaceDelete, self).delete(request, *args, **kwargs)

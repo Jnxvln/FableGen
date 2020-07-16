@@ -3,12 +3,14 @@
 {% block content %}
 <section class="uk-container uk-padding">
 
+  {% include 'app-messages.html' %}
   {% include 'back-btn.html' %}
 
   <h1>{{ place.name }}</h1>
   <p>Backstory: {{ place.backstory|capfirst }}</p>
 
   <div>
+    <a href="{% url 'places:place-update' place.pk %}" class="uk-button uk-button-secondary">Edit Place</a>
     <a href="{% url 'places:place-delete' place.pk %}" class="uk-button uk-button-danger">Delete Place</a>
   </div>
 </section>

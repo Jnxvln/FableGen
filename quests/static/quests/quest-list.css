@@ -1,0 +1,17 @@
+.quest-list-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+.quest-list-card-wrapper:hover {
+  text-decoration: none;
+}
+.quest-list-card {
+  margin: 10pt 0;
+  padding: 10pt 10pt;
+  background: transparent;
+  transition: background 0.3s;
+}
+.quest-list-card:hover {
+  background-color: #ececec;
+  transition: all 0.3s;
+}

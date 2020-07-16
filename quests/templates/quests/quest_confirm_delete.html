@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="uk-container uk-padding">
+
+  {% include 'back-btn.html' %}
+
+  <h1>Delete {{ quest.name }}?</h1>
+  <form method="POST">
+    {% csrf_token %}
+    <p style="color: red; font-weight: bold;">
+      You are about to permanently delete {{ quest.name }}! Continue?
+    </p>
+
+
+    <div>
+      <a href="{% url 'quests:quest-list' %}" class="uk-button uk-button-secondary">Cancel!</a>
+      <button type="submit" class="uk-button uk-button-danger">Permanently Delete</button>
+    </div>
+
+  </form>
+</section>
+{% endblock content %}

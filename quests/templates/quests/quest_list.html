@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block customCss %}
+  <link rel="stylesheet" href="{% static 'quests/quest-list.css' %}"/>
+{% endblock customCss %}
+
+{% block content %}
+<section class="uk-container uk-padding">
+
+  {% include 'app-messages.html' %}
+
+  <h1>Quests</h1>
+  <a href="{% url 'quests:quest-create' %}" class="uk-button uk-button-primary">New</a>
+  <ul class="quest-list-list uk-padding-small">
+    {% for quest in quests %}
+      <a href="{% url 'quests:quest-detail' quest.pk %}" class="quest-list-card-wrapper">
+        <div class="uk-card uk-card-default uk-card-body quest-list-card">
+          <h3 class="uk-card-title quest-list-name">{{ quest.name }}</h3>
+        </div>
+      </a>
+    {% endfor %}
+  </ul>
+</section>
+{% endblock content %}

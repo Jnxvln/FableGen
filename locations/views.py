@@ -18,11 +18,18 @@ class LocationCreate(CreateView):
 class LocationDetail(DetailView):
   model = Location
 
+class LocationUpdate(SuccessMessageMixin, UpdateView):
+  model = Location
+  fields = '__all__'
+  success_message = '%(name)s updated successfully!'
+
 class LocationDelete(DeleteView):
     model = Location
-    success_message = 'Location deleted successfully!'
+    success_message = '{location} deleted successfully!'
     success_url = reverse_lazy('locations:location-list')
 
     def delete(self, request, *args, **kwargs):
+      location = Location.objects.get(pk=kwargs.get('pk'))
+      self.success_message = f'{location} deleted successfully!'
       messages.success(self.request, self.success_message)
       return super(LocationDelete, self).delete(request, *args, **kwargs)

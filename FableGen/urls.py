@@ -22,4 +22,5 @@ urlpatterns = [
     path('locations/', include('locations.urls', namespace='locations')),
     path('places/', include('places.urls', namespace='places')),
     path('items/', include('items.urls', namespace='items')),
+    path('quests/', include('quests.urls', namespace='quests')),
 ]

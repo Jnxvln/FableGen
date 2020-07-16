@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'locations',
     'places',
     'items',
+    'quests',
+    'objectives',
+    'rewards',
 ]
 
 MIDDLEWARE = [
